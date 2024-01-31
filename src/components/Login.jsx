@@ -5,14 +5,22 @@ import { validate } from "../../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../../utils/userSlice";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errMsg, setErrMsg] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const email = useRef();
   const password = useRef();
+  const firstName = useRef();
+  const lastName = useRef();
 
   const signInHandler = () => {
     setIsSignIn(!isSignIn);
@@ -29,14 +37,30 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
+          updateProfile(user, {
+            displayName: `${firstName.current.value} ${lastName.current.value} `,
+            photoURL: "https://avatars.githubusercontent.com/u/98023963?v=4",
+          })
+            .then(() => {
+              // Profile updated!
+              // ...
+              const { uid, email, displayName, photoURL } = user;
+              dispatch(addUser({ uid, email, displayName, photoURL }));
+              console.log(user);
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              // ...
+              setErrMsg(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrMsg(errorCode + "-" + errorMessage);
         });
-    } else{
+    } else {
       signInWithEmailAndPassword(
         auth,
         email.current.value,
@@ -45,6 +69,7 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           console.log(user);
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -62,8 +87,12 @@ const Login = () => {
             <h1 className="text-3xl font-semibold text-left mb-6">
               {isSignIn ? "Sign In" : "Sign Up"}
             </h1>
-            {!isSignIn && <Input type={"text"} field={"First Name"} />}
-            {!isSignIn && <Input type={"text"} field={"Last Name"} />}
+            {!isSignIn && (
+              <Input refer={firstName} type={"text"} field={"First Name"} />
+            )}
+            {!isSignIn && (
+              <Input refer={lastName} type={"text"} field={"Last Name"} />
+            )}
             <Input refer={email} type={"text"} field={"Email"} />
             <Input refer={password} type={"password"} field={"Password"} />
 
