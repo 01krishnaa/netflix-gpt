@@ -9,8 +9,8 @@ const Header = () => {
           alt="bg"
         />
         <img
-          className="w-48 absolute top-0 bg-gradient-to-b from-black"
-          src="../logo.png"
+          className="w-48 absolute top-0 bg-gradient-to-b from-black p-3"
+          src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
           alt="logo"
         />
       </div>
