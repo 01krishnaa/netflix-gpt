@@ -38,13 +38,13 @@ const Login = () => {
         .then((userCredential) => {
           const user = userCredential.user;
           updateProfile(user, {
-            displayName: `${firstName.current.value} ${lastName.current.value} `,
+            displayName: `${firstName.current.value} ${lastName.current.value}`,
             photoURL: "https://avatars.githubusercontent.com/u/98023963?v=4",
           })
             .then(() => {
               // Profile updated!
               // ...
-              const { uid, email, displayName, photoURL } = user;
+              const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName, photoURL }));
               console.log(user);
               navigate("/browse");
