@@ -8,15 +8,14 @@ import {
   updateProfile,
 } from "firebase/auth";
 import { auth } from "../../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/userSlice";
+import { AVATAR } from "../../utils/constants";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errMsg, setErrMsg] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const email = useRef();
   const password = useRef();
   const firstName = useRef();
@@ -39,7 +38,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: `${firstName.current.value} ${lastName.current.value}`,
-            photoURL: "https://avatars.githubusercontent.com/u/98023963?v=4",
+            photoURL: AVATAR,
           })
             .then(() => {
               // Profile updated!
@@ -47,7 +46,6 @@ const Login = () => {
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName, photoURL }));
               console.log(user);
-              navigate("/browse");
             })
             .catch((error) => {
               // An error occurred
@@ -68,8 +66,6 @@ const Login = () => {
       )
         .then((userCredential) => {
           const user = userCredential.user;
-          console.log(user);
-          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;

@@ -4,14 +4,15 @@ import { auth } from "../../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../../utils/userSlice";
+import { LOGO_02 } from "../../utils/constants";
 
 const BrowseHeader = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    const unsubscribe =onAuthStateChanged(auth, (user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/auth.user
@@ -31,7 +32,6 @@ const BrowseHeader = () => {
     return () => unsubscribe();
   }, []);
 
-
   const signOutHandler = () => {
     signOut(auth)
       .then(() => {
@@ -47,11 +47,7 @@ const BrowseHeader = () => {
   return (
     <div className="bg-gradient-to-b from-black text-white flex justify-between">
       <div className="flex">
-        <img
-          className="w-48 p-3"
-          src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
-          alt="logo"
-        />
+        <img className="w-48 p-3" src={LOGO_02} alt="logo" />
         <ul className="flex">
           <li className="mx-3 my-6">Home</li>
           <li className="mx-3 my-6">TV Shows</li>
