@@ -45,7 +45,7 @@ const Login = () => {
               // ...
               const { uid, email, displayName, photoURL } = auth.currentUser;
               dispatch(addUser({ uid, email, displayName, photoURL }));
-              console.log(user);
+              // console.log(user);
             })
             .catch((error) => {
               // An error occurred
