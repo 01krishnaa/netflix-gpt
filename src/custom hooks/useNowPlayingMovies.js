@@ -13,7 +13,7 @@ const useNowPlayingMovies = () => {
       API_OPTIONS
     );
     dispatch(addNowPlayingMovies(resp.data.results));
-    console.log(resp.data.results);
+    // console.log(resp.data.results);
   };
 
   useEffect(() => {

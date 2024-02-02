@@ -45,7 +45,7 @@ const BrowseHeader = () => {
   };
 
   return (
-    <div className="bg-gradient-to-b from-black text-white flex justify-between">
+    <div className="bg-gradient-to-r from-black text-white flex justify-between absolute w-full">
       <div className="flex">
         <img className="w-48 p-3" src={LOGO_02} alt="logo" />
         <ul className="flex">
@@ -56,7 +56,7 @@ const BrowseHeader = () => {
       </div>
       <div className="flex m-2">
         <img src={user?.photoURL} className="h-12 mx-3 mt-2 rounded-full" />
-        <p className=" my-5 mx-2">dad</p>
+        <p className=" my-5 mx-2">User</p>
         <button
           onClick={signOutHandler}
           className="mx-5 mt-2 h-12 px-6 bg-red-600 rounded-lg hover:bg-red-700"
