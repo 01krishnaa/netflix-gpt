@@ -13,7 +13,6 @@ const VideoBackground = ({ id }) => {
     const trailers = clips.filter((clip) => clip.type == "Trailer");
     const trailer = trailers[0];
     const trailerKey = trailer.key;
-    console.log(trailerKey);
     setKey(trailerKey);
   };
 

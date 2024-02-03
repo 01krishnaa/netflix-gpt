@@ -55,8 +55,8 @@ const BrowseHeader = () => {
         </ul>
       </div>
       <div className="flex m-2">
-        <img src={user?.photoURL} className="h-12 mx-3 mt-2 rounded-full" />
-        <p className=" my-5 mx-2">User</p>
+        <img src={user?.photoURL} className="h-14 mx-3 mt-2 rounded-full" />
+        {/* <p className=" my-5 mx-2">User</p> */}
         <button
           onClick={signOutHandler}
           className="mx-5 mt-2 h-12 px-6 bg-red-600 rounded-lg hover:bg-red-700"

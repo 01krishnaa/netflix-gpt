@@ -12,8 +12,7 @@ const MainContainer = () => {
 
   const randomMovie = Math.floor(Math.random() * 20);
 
-  const mainMovie = allTrailerInfo[8];
-  console.log(mainMovie);
+  const mainMovie = allTrailerInfo[randomMovie];
 
   const { id, title, overview } = mainMovie;
 
