@@ -10,9 +10,9 @@ const MainContainer = () => {
 
   if (!allTrailerInfo) return;
 
-  const randomMovie = Math.floor(Math.random() * 20);
+  // const randomMovie = Math.floor(Math.random() * 20);
 
-  const mainMovie = allTrailerInfo[randomMovie];
+  const mainMovie = allTrailerInfo[0];
 
   const { id, title, overview } = mainMovie;
 

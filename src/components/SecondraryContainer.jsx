@@ -18,8 +18,8 @@ const SecondraryContainer = () => {
     (appstore) => appstore?.movie?.upcomingMovies
   );
   return (
-    <div className="bg-black text-white">
-      <div className="ml-16 -mt-60 relative">
+    <div className="bg-black text-white -mt-2">
+      <div className="ml-16 -mt-60 relative mr-5">
         <MovieList title={"Now Playing"} movieData={nowPLayingMovies} />
         <MovieList title={"Top Rated"} movieData={topRatedMovies} />
         <MovieList title={"Popular"} movieData={popularMovies} />
