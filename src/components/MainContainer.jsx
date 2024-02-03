@@ -7,8 +7,12 @@ const MainContainer = () => {
   const allTrailerInfo = useSelector(
     (appstore) => appstore?.movie?.nowPLayingMovies
   );
+
   if (!allTrailerInfo) return;
-  const mainMovie = allTrailerInfo[0];
+
+  const randomMovie = Math.floor(Math.random() * 20);
+
+  const mainMovie = allTrailerInfo[8];
   console.log(mainMovie);
 
   const { id, title, overview } = mainMovie;

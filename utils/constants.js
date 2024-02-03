@@ -1,4 +1,4 @@
-export const AVATAR = "https://avatars.githubusercontent.com/u/98023963?v=4";
+export const AVATAR = "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png";
 
 export const LOGO_01 =
   "https://www.freepnglogos.com/uploads/netflix-logo-0.png";
